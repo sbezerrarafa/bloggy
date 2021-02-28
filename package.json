@@ -1,0 +1,18 @@
+{
+  "name": "bloggy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "sucrase": "^3.17.1"
+  },
+  "repository": "https://github.com/sbezerrarafa/bloggy/tree/develop",
+  "author": "Rafa <sbezerra.rafa@gmail.com",
+  "license": "MIT"
+}
