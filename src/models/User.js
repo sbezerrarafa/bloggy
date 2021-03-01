@@ -1,4 +1,7 @@
 import { Schema, model } from 'mongoose'
+import bcrypt from 'bcrypt'
+
+const saltRounds = 10
 
 const UserSchema = new Schema(
   {
@@ -22,6 +25,17 @@ const UserSchema = new Schema(
   },
   { timestamps: true } // isso aqui mostra o momento que foi modificado ou criado algo no banco
 )
+
+UserSchema.pre('save', function (next) {
+  const user = this
+
+  bcrypt.hash(user.password, saltRounds, (error, hash) => {
+    if (error) return next(error)
+
+    user.password = hash
+    next()
+  })
+})
 
 export default model('User', UserSchema)
 
