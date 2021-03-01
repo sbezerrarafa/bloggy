@@ -1,4 +1,4 @@
-import { schema, model } from 'mongoose'
+import { Schema, model } from 'mongoose'
 
 const UserSchema = new Schema(
   {
@@ -24,3 +24,5 @@ const UserSchema = new Schema(
 )
 
 export default model('User', UserSchema)
+
+//duvida se caso eu botar somente como default UserSchema dá algum erro, já que só tem esta classe no users.
