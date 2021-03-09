@@ -58,12 +58,14 @@ class PostController {
 
   async update(request, response) {
     try {
+      const { title, subtitle, tags, cover, content } = request.body
       const post = await Post.findOne({ _id: request.params.post_id })
-      post.title = title
-      post.subtitle = subtitle
-      post.tags = tags
-      post.cover = cover
-      post.content = content
+
+      post.title = title || post.title
+      post.subtitle = subtitle || post.subtitle
+      post.tags = tags || post.tags
+      post.cover = cover || post.cover
+      post.content = content || post.content
 
       await post.save()
 
