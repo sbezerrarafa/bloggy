@@ -1,3 +1,4 @@
+import { response } from 'express'
 import Post from '../models/Post'
 import User from '../models/User'
 
@@ -43,6 +44,32 @@ class PostController {
       return response.status(200).json(post)
     } catch (error) {
       return response.status(404).json({ erro: 'Post not found' })
+    }
+  }
+
+  async delete(request, response) {
+    try {
+      await Post.findByIdAndDelete({ _id: request.params.post_id })
+      return response.status(200).json({ message: 'Post deletado com sucesso' })
+    } catch (error) {
+      return response.status(404).json({ message: 'Post not found' })
+    }
+  }
+
+  async update(request, response) {
+    try {
+      const post = await Post.findOne({ _id: request.params.post_id })
+      post.title = title
+      post.subtitle = subtitle
+      post.tags = tags
+      post.cover = cover
+      post.content = content
+
+      await post.save()
+
+      return response.status(200).json(post)
+    } catch (error) {
+      return response.json(404).json({ error: 'Post not found.' })
     }
   }
 }
