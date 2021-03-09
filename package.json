@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start": "nodemon src/server.js",
+    "build":"sucrase ./src -d ./dist --transforms imports",
+    "started": "node dist/server.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
