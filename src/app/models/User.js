@@ -22,6 +22,12 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
+    posts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Post',
+      },
+    ],
   },
   { timestamps: true } // isso aqui mostra o momento que foi modificado ou criado algo no banco
 )

@@ -22,6 +22,7 @@ class SessionController {
     }
 
     const { id, name } = user
+
     return response.status(200).json({
       user: {
         id,
