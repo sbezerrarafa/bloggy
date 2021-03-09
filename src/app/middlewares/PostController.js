@@ -23,6 +23,28 @@ class PostController {
 
     return response.status(201).json(post)
   }
+  async index(request, response) {
+    const posts = await Post.find()
+
+    return response.status(200).json(posts)
+  }
+  async indexAll(request, response) {
+    try {
+      const posts = await Post.find({ _id: request.params.user_id })
+      return response.status(200).json(posts)
+    } catch (error) {
+      return response.status(404).json({ erro: 'Posts not find for thats id' })
+    }
+  }
+
+  async show(request, response) {
+    try {
+      const post = await Post.find({ _id: request.params.post_id })
+      return response.status(200).json(post)
+    } catch (error) {
+      return response.status(404).json({ erro: 'Post not found' })
+    }
+  }
 }
 
 export default new PostController()
